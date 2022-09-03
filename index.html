@@ -152,6 +152,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-09-tf-basic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/26/09-tf-basic/">09_tf_basic</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/26/09-tf-basic/" class="archive-article-date">
+  	<time datetime="2022-08-26T07:53:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="09-Tensorflow课程学习"><a href="#09-Tensorflow课程学习" class="headerlink" title="09 Tensorflow课程学习"></a>09 Tensorflow课程学习</h1><h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><hr>
+<h3 id="反向传播bp中含义"><a href="#反向传播bp中含义" class="headerlink" title="反向传播bp中含义"></a>反向传播bp中含义</h3><ol>
+<li>变量初始化<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = tf.Variable(tf.constant(5, dtype=tf.float32))</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>bit位越长，精度越高，占用的内存空间也越大</p>
+<p>对于大部分深度学习算法，一般使用 tf.int32, tf.float32 可满足运算精度要求，部分对精度要求较高的算法，如强化学习，可以选择使用 tf.int64, tf.float64 精度保存张量。</p>
+<p><strong>float16</strong><br>浮点数，半精度，16个bit(2个字节Byte)表示一个数：<br>1个符号位（0为正，1为负）；<br>5个指数位（00001<del>11110， 也就是1到30， 减去偏置15，指数部分最终范围为-14</del>15）；<br>10个小数位（（0~1023）/1024）<br>最大数：0 11110 111111111 = 2^15 * (1+1023/1024)=65504<br>精度：2^-24 = 5.960e-08</p>
+<p><strong>float32</strong><br>单精度，32个bit(4个字节)表示一个数：<br>1个符号位（0为正，1为负）；<br>8个指数位（00000001<del>11111110， 也就是1到254， 减去偏置127，指数部分最终范围为-126 ~127）；<br>23个小数位（（0</del>2^23-1/1024）<br>最大数：0 11111110 111..11 = 3.403e+38<br>精度：2^-149 = 1.401e-45</p>
+<p><strong>int32</strong><br>占32bit（4个字节），整数：<br>占满所有bit，2^31，-2147483648 - 2147483647</p>
+<ol start="2">
+<li><p>定义损失函数之后，用with结构实现梯度求导</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with tf.GradientTape() as tape:   #梯度计算的过程</span><br><span class="line">    loss = tf.square(w+1)         #设定的损失函数</span><br><span class="line">grads = tape.gradient(loss, w)    #.gradient函数指示谁对谁求导</span><br></pre></td></tr></table></figure></li>
+<li><p>实现参数更新</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w.assign_sub(lr * grads)  #参数自减</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/26/09-tf-basic/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-It is a test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,7 +255,7 @@
 <blockquote>
 <p>引用</p>
 </blockquote>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><img src="/picture/dog.png" alt="添加图片test"></p>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><img src="https://github.com/wenqian-jiang/picture_store/blob/main/dog.jpeg?raw=true" alt="test"></p>
 <h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p><a target="_blank" rel="noopener" href="http://baidu.com"baidu"/">百度</a></p>
 <h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>无序列表 - + *</p>
 <ul>
