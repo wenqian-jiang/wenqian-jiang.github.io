@@ -152,27 +152,58 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-09-tf-basic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-01-tf-basic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/26/09-tf-basic/">09_tf_basic</a>
+      <a class="article-title" href="/2022/09/03/01-tf-basic/">tensorflow_basic</a>
     </h1>
   
 
         
-        <a href="/2022/08/26/09-tf-basic/" class="archive-article-date">
-  	<time datetime="2022-08-26T07:53:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-26</time>
+        <a href="/2022/09/03/01-tf-basic/" class="archive-article-date">
+  	<time datetime="2022-09-03T07:53:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="09-Tensorflow课程学习"><a href="#09-Tensorflow课程学习" class="headerlink" title="09 Tensorflow课程学习"></a>09 Tensorflow课程学习</h1><h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h3><hr>
+        <h1 id="09-Tensorflow课程学习"><a href="#09-Tensorflow课程学习" class="headerlink" title="09 Tensorflow课程学习"></a>09 Tensorflow课程学习</h1><h3 id="基础含义"><a href="#基础含义" class="headerlink" title="基础含义"></a>基础含义</h3><p>张量tensor：表示0阶-n阶的数组[[[</p>
+<p>数据类型：int,float,bool(布尔型，T or F),string</p>
+<h3 id="张量创建"><a href="#张量创建" class="headerlink" title="张量创建"></a>张量创建</h3><p>创建一个张量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tf.constant(张量内容，dtype=数据类型)</span><br><span class="line"></span><br><span class="line">a=np.arange(0, 5)</span><br><span class="line">b=tf.convert_to_tensor(a, dtype=tf.int64)  #将数组变成tensor格式</span><br><span class="line"></span><br><span class="line">#创建特殊张量</span><br><span class="line">tf.zeros()</span><br><span class="line">tf.ones()</span><br><span class="line">tf.fill(维度，指定值)</span><br></pre></td></tr></table></figure>
+
+<p>生成正态分布的随机数（均0，标准差1）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.random.normal(维度, mean= , stddev= )</span><br><span class="line"></span><br><span class="line">#截断式正态分布，更向均值集中</span><br><span class="line">tf.random.truncated_normal()</span><br></pre></td></tr></table></figure>
+
+<p>生成均匀分布随机数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.random.uniform(维度，minval=最小值，maxval=最大值)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><p>1.强制数据类型转换<br>tf.cast(张量名，dtype= )</p>
+<p>2.张量维度上元素运算<br>tf.reduce_min(x)  /  tf.reduce_max(x)<br>tf.reduce_sum()<br>tf.reduce_mean()</p>
+<p>3.数学运算<br>加减乘除：——需维度相同<br>tf.add(), tf.subtract(), tf.multiply(), tf.divide()<br>平方、次方、开方：<br>tf.square(), tf.pow(), tf.sqrt()<br>矩阵乘：<br>tf.matmul()</p>
+<p>4.axis的理解<br>axis=0  纵向操作，跨行，经度↓<br>axis=1  横向操作，跨列，纬度→<br>没有制定axis，默认对所有元素执行操作</p>
+<p>5.将变量标记为可训练的，被标记的变量会在bp中记录梯度信息<br>神经网络训练中，常用该函数标记待训练参数<br>tf.Variable(初始值）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = tf.Variable(tf.random.normal([2,2], mean=0, stddev=1))</span><br></pre></td></tr></table></figure>
+
+<p>6.特征和标签配对的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = tf.data.Dataset.from_tensor_slices((features, labels))</span><br></pre></td></tr></table></figure>
+
+<p>7.实现函数对指定参数的求导运算</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with tf.GradientTape() as tape:</span><br><span class="line">    loss = ...</span><br><span class="line">grad = tape.gradient(函数，对谁求导)</span><br></pre></td></tr></table></figure>
+
+<p>8.含索引枚举<br>enumerate(列表名)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i, element in enumerate(seq):      #带索引的枚举</span><br><span class="line">    print(i, element)</span><br></pre></td></tr></table></figure>
+
+<p>9.转换为独热编码,常在分类问题中<br>tf.one_hot(待转换数据，depth=分类数)</p>
+<p>10.softmax函数，使得y0，y1..的输出符合概率分布<br>tf.nn.softmax(y)</p>
+<p>11.参数的自更新<br>调用前，要先用tf.Variable定义变量为可训练<br>w.assign_sub(自减的值)</p>
+<p>12.返回张量沿指定维度最大值的索引<br>tf.argmax(x,axis=0)    #注意：返回的是对应的索引</p>
+<hr>
 <h3 id="反向传播bp中含义"><a href="#反向传播bp中含义" class="headerlink" title="反向传播bp中含义"></a>反向传播bp中含义</h3><ul>
 <li>变量初始化<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = tf.Variable(tf.constant(5, dtype=tf.float32))</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -199,7 +230,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/26/09-tf-basic/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/09/03/01-tf-basic/">展开全文 >></a>
         </p>
       
 
@@ -314,6 +345,81 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/08/23/It%20is%20a%20test/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-02-tf-Iris-bp-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/23/02-tf-Iris-bp-test/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/23/02-tf-Iris-bp-test/" class="archive-article-date">
+  	<time datetime="2022-08-23T08:42:56.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/23/02-tf-Iris-bp-test/">展开全文 >></a>
         </p>
       
 

@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | Hexo</title>
+  <title>tensorflow_basic | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+  <meta name="description" content="09 Tensorflow课程学习基础含义张量tensor：表示0阶-n阶的数组[[[ 数据类型：int,float,bool(布尔型，T or F),string 张量创建创建一个张量 123456789tf.constant(张量内容，dtype&#x3D;数据类型)a&#x3D;np.arange(0, 5)b&#x3D;tf.convert_to_tensor(a, dtype&#x3D;tf.int64)  #将数组变成ten">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tensorflow_basic">
+<meta property="og:url" content="http://example.com/2022/09/03/01-tf-basic/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="09 Tensorflow课程学习基础含义张量tensor：表示0阶-n阶的数组[[[ 数据类型：int,float,bool(布尔型，T or F),string 张量创建创建一个张量 123456789tf.constant(张量内容，dtype&#x3D;数据类型)a&#x3D;np.arange(0, 5)b&#x3D;tf.convert_to_tensor(a, dtype&#x3D;tf.int64)  #将数组变成ten">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-03T07:53:24.000Z">
+<meta property="article:modified_time" content="2022-09-05T08:06:33.213Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,130 +154,201 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-01-tf-basic" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      tensorflow_basic
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/09/03/01-tf-basic/" class="archive-article-date">
+
+        
+        <a href="/2022/09/03/01-tf-basic/" class="archive-article-date">
   	<time datetime="2022-09-03T07:53:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/09/03/01-tf-basic/">tensorflow_basic</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="09-Tensorflow课程学习"><a href="#09-Tensorflow课程学习" class="headerlink" title="09 Tensorflow课程学习"></a>09 Tensorflow课程学习</h1><h3 id="基础含义"><a href="#基础含义" class="headerlink" title="基础含义"></a>基础含义</h3><p>张量tensor：表示0阶-n阶的数组[[[</p>
+<p>数据类型：int,float,bool(布尔型，T or F),string</p>
+<h3 id="张量创建"><a href="#张量创建" class="headerlink" title="张量创建"></a>张量创建</h3><p>创建一个张量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tf.constant(张量内容，dtype=数据类型)</span><br><span class="line"></span><br><span class="line">a=np.arange(0, 5)</span><br><span class="line">b=tf.convert_to_tensor(a, dtype=tf.int64)  #将数组变成tensor格式</span><br><span class="line"></span><br><span class="line">#创建特殊张量</span><br><span class="line">tf.zeros()</span><br><span class="line">tf.ones()</span><br><span class="line">tf.fill(维度，指定值)</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>生成正态分布的随机数（均0，标准差1）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tf.random.normal(维度, mean= , stddev= )</span><br><span class="line"></span><br><span class="line">#截断式正态分布，更向均值集中</span><br><span class="line">tf.random.truncated_normal()</span><br></pre></td></tr></table></figure>
 
+<p>生成均匀分布随机数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.random.uniform(维度，minval=最小值，maxval=最大值)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><p>1.强制数据类型转换<br>tf.cast(张量名，dtype= )</p>
+<p>2.张量维度上元素运算<br>tf.reduce_min(x)  /  tf.reduce_max(x)<br>tf.reduce_sum()<br>tf.reduce_mean()</p>
+<p>3.数学运算<br>加减乘除：——需维度相同<br>tf.add(), tf.subtract(), tf.multiply(), tf.divide()<br>平方、次方、开方：<br>tf.square(), tf.pow(), tf.sqrt()<br>矩阵乘：<br>tf.matmul()</p>
+<p>4.axis的理解<br>axis=0  纵向操作，跨行，经度↓<br>axis=1  横向操作，跨列，纬度→<br>没有制定axis，默认对所有元素执行操作</p>
+<p>5.将变量标记为可训练的，被标记的变量会在bp中记录梯度信息<br>神经网络训练中，常用该函数标记待训练参数<br>tf.Variable(初始值）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = tf.Variable(tf.random.normal([2,2], mean=0, stddev=1))</span><br></pre></td></tr></table></figure>
+
+<p>6.特征和标签配对的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = tf.data.Dataset.from_tensor_slices((features, labels))</span><br></pre></td></tr></table></figure>
+
+<p>7.实现函数对指定参数的求导运算</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with tf.GradientTape() as tape:</span><br><span class="line">    loss = ...</span><br><span class="line">grad = tape.gradient(函数，对谁求导)</span><br></pre></td></tr></table></figure>
+
+<p>8.含索引枚举<br>enumerate(列表名)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i, element in enumerate(seq):      #带索引的枚举</span><br><span class="line">    print(i, element)</span><br></pre></td></tr></table></figure>
+
+<p>9.转换为独热编码,常在分类问题中<br>tf.one_hot(待转换数据，depth=分类数)</p>
+<p>10.softmax函数，使得y0，y1..的输出符合概率分布<br>tf.nn.softmax(y)</p>
+<p>11.参数的自更新<br>调用前，要先用tf.Variable定义变量为可训练<br>w.assign_sub(自减的值)</p>
+<p>12.返回张量沿指定维度最大值的索引<br>tf.argmax(x,axis=0)    #注意：返回的是对应的索引</p>
+<hr>
+<h3 id="反向传播bp中含义"><a href="#反向传播bp中含义" class="headerlink" title="反向传播bp中含义"></a>反向传播bp中含义</h3><ul>
+<li>变量初始化<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = tf.Variable(tf.constant(5, dtype=tf.float32))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>bit位越长，精度越高，占用的内存空间也越大</p>
+<p>对于大部分深度学习算法，一般使用 tf.int32, tf.float32 可满足运算精度要求，部分对精度要求较高的算法，如强化学习，可以选择使用 tf.int64, tf.float64 精度保存张量。</p>
+<p><strong>float16</strong><br>浮点数，半精度，16个bit(2个字节Byte)表示一个数：<br>1个符号位（0为正，1为负）；<br>5个指数位（00001-11110， 也就是1到30， 减去偏置15，指数部分最终范围为-14-15）；<br>10个小数位（（0~1023）/1024）<br>最大数：0 11110 111111111 = 2^15 * (1+1023/1024)=65504<br>精度：2^-24 = 5.960e-08</p>
+<p><strong>float32</strong><br>单精度，32个bit(4个字节)表示一个数：<br>1个符号位（0为正，1为负）；<br>8个指数位（00000001-11111110， 也就是1到254， 减去偏置127，指数部分最终范围为-126 -127）；<br>23个小数位（（0-2^23-1/1024）<br>最大数：0 11111110 111..11 = 3.403e+38<br>精度：2^-149 = 1.401e-45</p>
+<p><strong>int32</strong><br>占32bit（4个字节），整数：<br>占满所有bit，2^31，-2147483648 - 2147483647</p>
+<ul>
+<li><p>定义损失函数之后，用with结构实现梯度求导</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with tf.GradientTape() as tape:   #梯度计算的过程</span><br><span class="line">    loss = tf.square(w+1)         #设定的损失函数</span><br><span class="line">grads = tape.gradient(loss, w)    #.gradient函数指示谁对谁求导</span><br></pre></td></tr></table></figure></li>
+<li><p>实现参数更新</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w.assign_sub(lr * grads)  #参数自减</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/09/03/01-tf-basic/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/08/23/It%20is%20a%20test/" class="archive-article-date">
-  	<time datetime="2022-08-23T08:53:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/08/23/It%20is%20a%20test/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第一篇博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/23/It%20is%20a%20test/">第一篇博客</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/08/23/02-tf-Iris-bp-test/" class="archive-article-date">
-  	<time datetime="2022-08-23T08:42:56.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/23/02-tf-Iris-bp-test/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/08/23/hello-world/" class="archive-article-date">
-  	<time datetime="2022-08-23T08:42:56.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/23/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -296,8 +371,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
