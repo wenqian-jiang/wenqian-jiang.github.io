@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hello World | Hexo</title>
+  <title>鸢尾花数据集的bp实现 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="神经网络BP实现以鸢尾花数据集为例 123456from sklearn import datasetsfrom pandas import DataFrameimport pandas as pdimport numpy as npimport matplotlib.pyplot as pltimport tensorflow as tf  数据导入从数据库里导入 12x_data &#x3D; data">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/08/23/02-tf-Iris-bp-test/index.html">
+<meta property="og:title" content="鸢尾花数据集的bp实现">
+<meta property="og:url" content="http://example.com/2022/09/05/02-tf-Iris-bp-test/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="神经网络BP实现以鸢尾花数据集为例 123456from sklearn import datasetsfrom pandas import DataFrameimport pandas as pdimport numpy as npimport matplotlib.pyplot as pltimport tensorflow as tf  数据导入从数据库里导入 12x_data &#x3D; data">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-23T08:42:56.439Z">
-<meta property="article:modified_time" content="2022-08-23T08:42:56.439Z">
+<meta property="article:published_time" content="2022-09-05T08:53:24.000Z">
+<meta property="article:modified_time" content="2022-09-06T08:15:02.310Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -161,33 +161,47 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      鸢尾花数据集的bp实现
     </h1>
   
 
         
-        <a href="/2022/08/23/02-tf-Iris-bp-test/" class="archive-article-date">
-  	<time datetime="2022-08-23T08:42:56.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
+        <a href="/2022/09/05/02-tf-Iris-bp-test/" class="archive-article-date">
+  	<time datetime="2022-09-05T08:53:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="神经网络BP实现"><a href="#神经网络BP实现" class="headerlink" title="神经网络BP实现"></a>神经网络BP实现</h1><p>以鸢尾花数据集为例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import datasets</span><br><span class="line">from pandas import DataFrame</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import tensorflow as tf</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><p>从数据库里导入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x_data = datasets.load_iris().data</span><br><span class="line">y_data = datasets.load_iris().target</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h2 id="数据乱序"><a href="#数据乱序" class="headerlink" title="数据乱序"></a>数据乱序</h2><p>使用相同的随机数种子，使输入特征-标签对应</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(116)</span><br><span class="line">np.random.shuffle(x_data)</span><br><span class="line">np.random.seed(116)</span><br><span class="line">np.random.shuffle(y_data)</span><br><span class="line">tf.random.set_seed(116)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="数据集划分"><a href="#数据集划分" class="headerlink" title="数据集划分"></a>数据集划分</h2><p>划分训练集、测试集后，要统一数据类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x_train = x_data[:-30]</span><br><span class="line">y_train = y_data[:-30]</span><br><span class="line">x_test = x_data[-30:]</span><br><span class="line">y_test = y_data[-30:]</span><br><span class="line"></span><br><span class="line">x_train = tf.cast(x_train, tf.float32)</span><br><span class="line">x_test = tf.cast(x_test, tf.float32)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h2 id="特征-标签配对"><a href="#特征-标签配对" class="headerlink" title="特征-标签配对"></a>特征-标签配对</h2><p>batch打包，以batch为单位输入神经网络</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#32个为一组打包</span><br><span class="line">train_db = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(32)</span><br><span class="line">test_db = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(32)</span><br></pre></td></tr></table></figure>
 
+<h2 id="定义可训练参数"><a href="#定义可训练参数" class="headerlink" title="定义可训练参数"></a>定义可训练参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># w1对应4特征输入，3分类输出--4*3</span><br><span class="line">w1 = tf.Variable(tf.random.truncated_normal([4, 3], stddev=0.1, seed=1))</span><br><span class="line">b1 = tf.Variable(tf.random.truncated_normal([3], stddev=0.1, seed=1))</span><br></pre></td></tr></table></figure>
+
+<h2 id="嵌套迭代循环"><a href="#嵌套迭代循环" class="headerlink" title="嵌套迭代循环"></a>嵌套迭代循环</h2><p>先设定基本参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lr = 0.1</span><br><span class="line">train_loss_results = []  #每轮的loss记录</span><br><span class="line">test_acc = []  #每轮的准确率记录</span><br><span class="line">epoch = 500</span><br><span class="line">loss_all = 0  #4个batch的总loss</span><br></pre></td></tr></table></figure>
+
+<p>with结构更新参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">for epoch in range(epoch):  #数据集级别迭代</span><br><span class="line">    #训练部分</span><br><span class="line">    for step, (x_train, y_train) in enumerate(train_db): #batch级别迭代</span><br><span class="line">        with tf.GradientTape() as tape:   #记录梯度信息</span><br><span class="line">            #前向传播计算y</span><br><span class="line">            y = tf.matmul(x_train, w1) + b1</span><br><span class="line">            y = tf.nn.softmax(y)</span><br><span class="line">            y_hot = tf.one_hot(y_train, depth=3)  #转换为独热码</span><br><span class="line"></span><br><span class="line">            #计算总loss</span><br><span class="line">            loss = tf.reduce_mean(tf.square(y_hot - y))  #计算均方差损失函数</span><br><span class="line">            loss_all += loss.numpy()</span><br><span class="line">        grads = tape.gradient(loss, [w1, b1])  #对w1，b1分别求导</span><br><span class="line">        w1.assign_sub(lr * grads[0])   #参数自更新</span><br><span class="line">        b1.assign_sub(lr * grads[1])   </span><br><span class="line">    print(&#x27;Epoch&#123;&#125;, loss&#123;&#125;&#x27;.format(epoch, loss_all/4))   #除以的是batch循环次数</span><br><span class="line">    train_loss_results.append(loss_all / 4)</span><br><span class="line">    loss_all = 0   #归零，记录下一循环的loss</span><br><span class="line">    </span><br><span class="line">    #测试部分</span><br><span class="line">    total_correct, total_number = 0, 0</span><br><span class="line">    #计算当前参数前向传播后的识别准确率acc</span><br><span class="line">    for x_test, y_test in test_db:</span><br><span class="line">        y = tf.matmul(x_test, w1) + b1   #预测结果,matmul矩阵乘</span><br><span class="line">        y = tf.nn.softmax(y)      #概率分布y</span><br><span class="line">        pred = tf.argmax(y, axis=1)   #最大概率对应的索引（分类）</span><br><span class="line">        #调整数据类型与y_test一致</span><br><span class="line">        pred = tf.cast(pred, dtype=y_test.dtype)   </span><br><span class="line">        </span><br><span class="line">        #预测值和y一致，则correct=1,将布尔型类型--&gt;int</span><br><span class="line">        correct = tf.cast(tf.equal(pred, y_test), dtype=tf.int32)  </span><br><span class="line">        correct = tf.reduce_sum(correct)     #将batch分组里的结果相加</span><br><span class="line">        total_correct = total_correct + int(correct)       #将所有batch相加</span><br><span class="line">        total_number = total_number + x_test.shape[0]</span><br><span class="line">    acc = total_correct / total_number</span><br><span class="line">    test_acc.append(acc)</span><br><span class="line">    print(&#x27;test_acc&#x27;, acc)</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果可视化"><a href="#结果可视化" class="headerlink" title="结果可视化"></a>结果可视化</h2><p>损失函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.title(&#x27;Loss function curve&#x27;)</span><br><span class="line">plt.xlabel(&#x27;Epoch&#x27;)</span><br><span class="line">plt.ylabel(&#x27;loss&#x27;)</span><br><span class="line">plt.plot(train_loss_results, label=&#x27;$loss$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>准确率</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.title(&#x27;Acc curve&#x27;)</span><br><span class="line">plt.xlabel(&#x27;Epoch&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Acc&#x27;)</span><br><span class="line">plt.plot(test_acc, label=&#x27;$Accuracy$&#x27;)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
       
 
       
@@ -266,7 +280,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/23/02-tf-Iris-bp-test/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/09/05/02-tf-Iris-bp-test/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,18 +294,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/08/23/It%20is%20a%20test/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/09/06/03-tf-bp-optimization/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          第一篇博客
+          神经网络优化
         
       </div>
     </a>
   
   
-    <a href="/2022/08/23/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2022/09/03/01-tf-basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">tensorflow_basic</div>
       <i class="icon-circle-right"></i>
     </a>
   
