@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>tensorflow_basic | Hexo</title>
+  <title>1-1 tensorflow基础学习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="09 Tensorflow课程学习基础含义张量tensor：表示0阶-n阶的数组[[[ 数据类型：int,float,bool(布尔型，T or F),string 张量创建创建一个张量 123456789tf.constant(张量内容，dtype&#x3D;数据类型)a&#x3D;np.arange(0, 5)b&#x3D;tf.convert_to_tensor(a, dtype&#x3D;tf.int64)  #将数组变成ten">
+  <meta name="description" content="Tensorflow课程学习反向传播代码基本框架123456789101112w &#x3D; tf.Variable(tf.constant(5, dtype&#x3D;tf.float32))lr &#x3D; 0.2   #学习率epoch &#x3D; 40for epoch in range(epoch):   #定义顶层循环    with tf.GradientTape() as tape:   #梯度计算的过程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow_basic">
+<meta property="og:title" content="1-1 tensorflow基础学习">
 <meta property="og:url" content="http://example.com/2022/09/03/01-tf-basic/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="09 Tensorflow课程学习基础含义张量tensor：表示0阶-n阶的数组[[[ 数据类型：int,float,bool(布尔型，T or F),string 张量创建创建一个张量 123456789tf.constant(张量内容，dtype&#x3D;数据类型)a&#x3D;np.arange(0, 5)b&#x3D;tf.convert_to_tensor(a, dtype&#x3D;tf.int64)  #将数组变成ten">
+<meta property="og:description" content="Tensorflow课程学习反向传播代码基本框架123456789101112w &#x3D; tf.Variable(tf.constant(5, dtype&#x3D;tf.float32))lr &#x3D; 0.2   #学习率epoch &#x3D; 40for epoch in range(epoch):   #定义顶层循环    with tf.GradientTape() as tape:   #梯度计算的过程">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-03T07:53:24.000Z">
-<meta property="article:modified_time" content="2022-09-06T08:15:28.775Z">
+<meta property="article:modified_time" content="2022-09-07T07:43:46.470Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -161,7 +161,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tensorflow_basic
+      1-1 tensorflow基础学习
     </h1>
   
 
@@ -174,7 +174,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="09-Tensorflow课程学习"><a href="#09-Tensorflow课程学习" class="headerlink" title="09 Tensorflow课程学习"></a>09 Tensorflow课程学习</h1><h3 id="基础含义"><a href="#基础含义" class="headerlink" title="基础含义"></a>基础含义</h3><p>张量tensor：表示0阶-n阶的数组[[[</p>
+        <h1 id="Tensorflow课程学习"><a href="#Tensorflow课程学习" class="headerlink" title="Tensorflow课程学习"></a>Tensorflow课程学习</h1><h3 id="反向传播代码基本框架"><a href="#反向传播代码基本框架" class="headerlink" title="反向传播代码基本框架"></a>反向传播代码基本框架</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">w = tf.Variable(tf.constant(5, dtype=tf.float32))</span><br><span class="line"></span><br><span class="line">lr = 0.2   #学习率</span><br><span class="line">epoch = 40</span><br><span class="line"></span><br><span class="line">for epoch in range(epoch):   #定义顶层循环</span><br><span class="line">    with tf.GradientTape() as tape:   #梯度计算的过程</span><br><span class="line">        loss = tf.square(w+1)   #设定的损失函数</span><br><span class="line">    grads = tape.gradient(loss, w)    #.gradient函数指示谁对谁求导</span><br><span class="line"></span><br><span class="line">    w.assign_sub(lr * grads)  #对变量做自减</span><br><span class="line">    print(&#x27;After %s epoch,w is %f,loss is %f&#x27; % (epoch, w.numpy(), loss))</span><br></pre></td></tr></table></figure>
+
+<h3 id="基础含义"><a href="#基础含义" class="headerlink" title="基础含义"></a>基础含义</h3><p>张量tensor：表示0阶-n阶的数组[[[</p>
 <p>数据类型：int,float,bool(布尔型，T or F),string</p>
 <h3 id="张量创建"><a href="#张量创建" class="headerlink" title="张量创建"></a>张量创建</h3><p>创建一个张量</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tf.constant(张量内容，dtype=数据类型)</span><br><span class="line"></span><br><span class="line">a=np.arange(0, 5)</span><br><span class="line">b=tf.convert_to_tensor(a, dtype=tf.int64)  #将数组变成tensor格式</span><br><span class="line"></span><br><span class="line">#创建特殊张量</span><br><span class="line">tf.zeros()</span><br><span class="line">tf.ones()</span><br><span class="line">tf.fill(维度，指定值)</span><br></pre></td></tr></table></figure>
@@ -319,7 +321,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          鸢尾花数据集的bp实现
+          1-2 鸢尾花数据集的bp实现
         
       </div>
     </a>
