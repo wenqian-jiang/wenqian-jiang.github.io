@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>1-3 神经网络优化 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目标：使用正则化减少过拟合；使用优化器更新网络参数 1.条件语句tf.where(条件语句，真返回A，假返回B) 12#若a &gt; b,则返回a对应元素,否则bc &#x3D; tf.where(tf.greater(a, b), a, b)  2.返回[0,1)之间随机数np.random.RandomState(维度)维度为空，返回标量 3.数组按垂直方向叠加组合np.vstack(数组1，数组2)">
+  <meta name="description" content="神经网络优化及酸奶销量实例目标：使用正则化减少过拟合；使用优化器更新网络参数 涉及函数1.条件语句tf.where(条件语句，真返回A，假返回B) 12#若a &gt; b,则返回a对应元素,否则bc &#x3D; tf.where(tf.greater(a, b), a, b)  2.返回[0,1)之间随机数np.random.RandomState(维度)维度为空，返回标量 3.数组按垂直方向叠加组合n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1-3 神经网络优化">
 <meta property="og:url" content="http://example.com/2022/09/06/03-tf-bp-optimization/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="目标：使用正则化减少过拟合；使用优化器更新网络参数 1.条件语句tf.where(条件语句，真返回A，假返回B) 12#若a &gt; b,则返回a对应元素,否则bc &#x3D; tf.where(tf.greater(a, b), a, b)  2.返回[0,1)之间随机数np.random.RandomState(维度)维度为空，返回标量 3.数组按垂直方向叠加组合np.vstack(数组1，数组2)">
+<meta property="og:description" content="神经网络优化及酸奶销量实例目标：使用正则化减少过拟合；使用优化器更新网络参数 涉及函数1.条件语句tf.where(条件语句，真返回A，假返回B) 12#若a &gt; b,则返回a对应元素,否则bc &#x3D; tf.where(tf.greater(a, b), a, b)  2.返回[0,1)之间随机数np.random.RandomState(维度)维度为空，返回标量 3.数组按垂直方向叠加组合n">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-06T08:22:24.000Z">
-<meta property="article:modified_time" content="2022-09-07T07:43:49.944Z">
+<meta property="article:modified_time" content="2022-09-07T14:46:57.969Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -174,34 +174,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目标：使用正则化减少过拟合；使用优化器更新网络参数</p>
-<h2 id="1-条件语句"><a href="#1-条件语句" class="headerlink" title="1.条件语句"></a>1.条件语句</h2><p>tf.where(条件语句，真返回A，假返回B)</p>
+        <h1 id="神经网络优化及酸奶销量实例"><a href="#神经网络优化及酸奶销量实例" class="headerlink" title="神经网络优化及酸奶销量实例"></a>神经网络优化及酸奶销量实例</h1><p>目标：使用正则化减少过拟合；使用优化器更新网络参数</p>
+<h2 id="涉及函数"><a href="#涉及函数" class="headerlink" title="涉及函数"></a>涉及函数</h2><h3 id="1-条件语句"><a href="#1-条件语句" class="headerlink" title="1.条件语句"></a>1.条件语句</h3><p>tf.where(条件语句，真返回A，假返回B)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#若a &gt; b,则返回a对应元素,否则b</span><br><span class="line">c = tf.where(tf.greater(a, b), a, b)</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-返回-0-1-之间随机数"><a href="#2-返回-0-1-之间随机数" class="headerlink" title="2.返回[0,1)之间随机数"></a>2.返回[0,1)之间随机数</h2><p>np.random.RandomState(维度)<br>维度为空，返回标量</p>
-<h2 id="3-数组按垂直方向叠加组合"><a href="#3-数组按垂直方向叠加组合" class="headerlink" title="3.数组按垂直方向叠加组合"></a>3.数组按垂直方向叠加组合</h2><p>np.vstack(数组1，数组2)</p>
-<h2 id="4-生成网格坐标点"><a href="#4-生成网格坐标点" class="headerlink" title="4.生成网格坐标点"></a>4.生成网格坐标点</h2><p>np.mgrid[起始值，结束值，步长]   若要配对，要保持维度相同<br>x.ravel()   拉直为一位数组<br>np.c_[]     使返回的间隔数值点配对 </p>
-<hr>
+<h3 id="2-返回-0-1-之间随机数"><a href="#2-返回-0-1-之间随机数" class="headerlink" title="2.返回[0,1)之间随机数"></a>2.返回[0,1)之间随机数</h3><p>np.random.RandomState(维度)<br>维度为空，返回标量</p>
+<h3 id="3-数组按垂直方向叠加组合"><a href="#3-数组按垂直方向叠加组合" class="headerlink" title="3.数组按垂直方向叠加组合"></a>3.数组按垂直方向叠加组合</h3><p>np.vstack(数组1，数组2)</p>
+<h3 id="4-生成网格坐标点"><a href="#4-生成网格坐标点" class="headerlink" title="4.生成网格坐标点"></a>4.生成网格坐标点</h3><p>np.mgrid[起始值，结束值，步长]   若要配对，要保持维度相同<br>x.ravel()   拉直为一位数组<br>np.c_[]     使返回的间隔数值点配对 </p>
 <h2 id="神经网络复杂度"><a href="#神经网络复杂度" class="headerlink" title="神经网络复杂度"></a>神经网络复杂度</h2><p>常用 NN 层数，NN 参数个数表示</p>
-<h3 id="1-空间复杂度"><a href="#1-空间复杂度" class="headerlink" title="1.空间复杂度"></a>1.空间复杂度</h3><p>层数 = 隐藏层 + 1输出层<br>总参数 = 总w + 总b<br>        （3-4-2结构，（3<em>4+4）+（4</em>2+2）=26）</p>
-<h3 id="2-时间复杂度"><a href="#2-时间复杂度" class="headerlink" title="2.时间复杂度"></a>2.时间复杂度</h3><p>乘加的运算次数<br>        （3-4-2结构，（3<em>4）+（4</em>2）=20）</p>
-<hr>
+<p><strong>1.空间复杂度</strong><br>层数 = 隐藏层 + 1输出层<br>总参数 = 总w + 总b<br>        （3-4-2结构，（3 * 4+4）+（4 * 2+2）=26）</p>
+<p><strong>2.时间复杂度</strong><br>乘加的运算次数<br>        （3-4-2结构，（3 * 4）+（4 * 2）=20）</p>
 <h2 id="学习率的选择——指数衰减学习率"><a href="#学习率的选择——指数衰减学习率" class="headerlink" title="学习率的选择——指数衰减学习率"></a>学习率的选择——指数衰减学习率</h2><p>先用较大的学习率，快速得到最优解，逐步减少学习率<br>指数衰减学习率 = 初始lr * 衰减率^(当前轮次/多少轮衰减一次)<br>lr = lr_base * lr_decay**(epoch/lr_step)<br>实现指数衰减</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">epoch = 40</span><br><span class="line">lr_base = 0.2</span><br><span class="line">lr_decay = 0.99</span><br><span class="line">lr_step =1</span><br><span class="line"></span><br><span class="line">for epoch in range(epoch):</span><br><span class="line">    lr = lr_base * lr_decay**(epoch/lr_step)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><h3 id="1-Sigmoid函数"><a href="#1-Sigmoid函数" class="headerlink" title="1.Sigmoid函数"></a>1.Sigmoid函数</h3><p>f(x)=1/(1+e(-x))<br>tf.nn.sigmoid(x)</p>
-<p>特点：<br>求导后得到0-0.25之间的值，相乘后接近0，易造成梯度缺失；<br>运算中存在幂运算，训练时间长；<br>输出非0均值，收敛慢</p>
-<h3 id="2-Tanh函数"><a href="#2-Tanh函数" class="headerlink" title="2.Tanh函数"></a>2.Tanh函数</h3><p>f(x)=(1-e(-2x))/(1+e(-2x))<br>tf.math.tanh(x)</p>
-<p>特点：<br>易造成梯度缺失；<br>存在幂运算，训练时间长；<br>输出是0均值*</p>
-<h3 id="3-Relu函数"><a href="#3-Relu函数" class="headerlink" title="3.Relu函数"></a>3.Relu函数</h3><p>f(x)=max(x, 0)= 0(x&lt;0) / x(x&gt;=0)<br>tf.nn.relu(x)</p>
-<p>特点：<br>解决了梯度缺失(只在正区间)；<br>只需判断输入是否大于0，计算速度快；<br>收敛速度快于sigmoid, tanh;<br>输出非0均值，收敛慢；<br>有的参数永远不能被更新。</p>
-<h3 id="4-Leaky-Relu函数"><a href="#4-Leaky-Relu函数" class="headerlink" title="4.Leaky Relu函数"></a>4.Leaky Relu函数</h3><p>f(x)=max(ax, x)<br>tf.nn.leaky_relu(x)</p>
-<p>特点：<br>理论上有Relu所有优点，但实际没有证明这点</p>
-<p><strong>激活函数的选择：</strong><br>首选relu；<br>lr设置较小值；<br>输入特征标准化，满足均值0，标准差1的正态分布；<br>初始参数中心化，满足均值0，标准差√(2/当前层输入特征个数)</p>
+
+<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><h3 id="1-Sigmoid函数"><a href="#1-Sigmoid函数" class="headerlink" title="1.Sigmoid函数"></a>1.Sigmoid函数</h3><p>f(x)=1/(1+e(-x))<br>tf.nn.sigmoid(x)<br>特点：<br>求导后得到0-0.25之间的值，相乘后接近0，易造成梯度缺失； 运算中存在幂运算，训练时间长； 输出非0均值，收敛慢</p>
+<h3 id="2-Tanh函数"><a href="#2-Tanh函数" class="headerlink" title="2.Tanh函数"></a>2.Tanh函数</h3><p>f(x)=(1-e(-2x))/(1+e(-2x))<br>tf.math.tanh(x)<br>特点：<br>易造成梯度缺失； 存在幂运算，训练时间长； 输出是0均值*</p>
+<h3 id="3-Relu函数"><a href="#3-Relu函数" class="headerlink" title="3.Relu函数"></a>3.Relu函数</h3><p>f(x)=max(x, 0)= 0(x&lt;0) / x(x&gt;=0)<br>tf.nn.relu(x)<br>特点：<br>解决了梯度缺失(只在正区间)； 只需判断输入是否大于0，计算速度快；<br>收敛速度快于sigmoid, tanh; 输出非0均值，收敛慢； 有的参数永远不能被更新。</p>
+<h3 id="4-Leaky-Relu函数"><a href="#4-Leaky-Relu函数" class="headerlink" title="4.Leaky Relu函数"></a>4.Leaky Relu函数</h3><p>f(x)=max(ax, x)<br>tf.nn.leaky_relu(x)<br>特点：<br>理论上有Relu所有优点，但实际没有证明这点</p>
+<h3 id="激活函数的选择："><a href="#激活函数的选择：" class="headerlink" title="激活函数的选择："></a><strong>激活函数的选择：</strong></h3><p>首选relu；<br>lr设置较小值；<br>输入特征标准化，满足均值0，标准差1的正态分布；<br>初始参数中心化，满足均值0，标准差√(2/当前层输入特征个数)</p>
 <h2 id="损失函数loss"><a href="#损失函数loss" class="headerlink" title="损失函数loss"></a>损失函数loss</h2><p>优化目标：loss最小—MSE，自定义，交叉熵CE</p>
-<p>1.均方误差MSE<br>MSE(y_pred, y) = ∑(y-y_pred)^2 / n<br>loss_mse = tf.reduce_mean(tf.square(y_pred - y))</p>
-<p>&amp;&amp; tf_03_bp_opt.ipynb酸奶销量预测</p>
-<p>2.自定义损失函数</p>
+<h3 id="1-均方误差MSE"><a href="#1-均方误差MSE" class="headerlink" title="1.均方误差MSE"></a>1.均方误差MSE</h3><p>MSE(y_pred, y) = ∑(y-y_pred)^2 / n<br>loss_mse = tf.reduce_mean(tf.square(y_pred - y))</p>
+<p><strong>&amp;&amp; tf_03_bp_opt.ipynb酸奶销量预测</strong><br>描述：酸奶日销量y，x1，x2为影响日销量因素，损失函数选用MSE<br>数据为随机生成且加入噪声 y = x1 + x2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rdm = np.random.RandomState(seed=23455)  #实际运用不用seed,0-1之间随机数</span><br><span class="line">x = rdm.rand(32, 2)  #取出随机的x1，x2</span><br><span class="line">y = [[x1 +x2 +(rdm.rand() / 10.0 - 0.05)] for (x1, x2) in x]</span><br><span class="line">x = tf.cast(x, dtype=tf.float32)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">w1 = tf.Variable(tf.random.normal([2, 1], stddev=1, seed=1))</span><br><span class="line"></span><br><span class="line">epoch = 15000</span><br><span class="line">lr = 0.002</span><br><span class="line"></span><br><span class="line">for epoch in range(epoch):</span><br><span class="line">    with tf.GradientTape() as tape:</span><br><span class="line">        y_pred = tf.matmul(x, w1)</span><br><span class="line">        loss_mse = tf.reduce_mean(tf.square(y_pred - y))</span><br><span class="line">    grads = tape.gradient(loss_mse, w1)</span><br><span class="line">    w1.assign_sub(lr * grads)</span><br><span class="line"></span><br><span class="line">    if epoch % 1000 == 0:</span><br><span class="line">        print(&#x27;After %d step, w1 is &#x27; %(epoch))</span><br><span class="line">        print(w1.numpy(), &#x27;\n&#x27;)</span><br><span class="line"></span><br><span class="line">print(&#x27;final w1 is:&#x27;, w1.numpy())</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-自定义损失函数"><a href="#2-自定义损失函数" class="headerlink" title="2.自定义损失函数"></a>2.自定义损失函数</h3><p>在销量预测问题上，预测偏多，损失成本；预测偏少，损失利润<br>当成本与利润不等时，mse无法实现利益最大化</p>
+<p>自定义函数—平衡成本和利润<br>loss(y, y_pred) = ∑ f(y, y_pred)<br>y_pred &lt; y，预测偏少，损失利润，f=profit * (y - y_pred)<br>y_pred &gt;= y，预测偏多，损失成本，f=cost * (y_pred - y)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loss = tf.reduce_sum(tf.where(tf.greater(y_pred, y), cost*(y_pred -y), profit*(y - y_pred)))</span><br></pre></td></tr></table></figure>
+<p>cost=1，profit=99，会往高利润–&gt;高销量预测<br>cost=99，profit=1，会往低成本–&gt;低销量预测</p>
+<h3 id="3-交叉熵损失函数CE（Cross-Entropy）"><a href="#3-交叉熵损失函数CE（Cross-Entropy）" class="headerlink" title="3.交叉熵损失函数CE（Cross Entropy）"></a>3.交叉熵损失函数CE（Cross Entropy）</h3><p>表征两个概率分布之间的距离,哪个预测结果更准确<br>交叉熵结果越小，越准确<br>H(y, y_pred) = -∑ y * ln(y_pred)<br>tf.losses.categorical_crossentropy(y, y_pred1)</p>
+<p>Softmax与交叉熵结合<br>先转换为概率分布，再计算交叉熵<br>tf.nn.softmax_cross_entropy_with_logits(y, y_pred)</p>
+<h2 id="过拟合与欠拟合"><a href="#过拟合与欠拟合" class="headerlink" title="过拟合与欠拟合"></a>过拟合与欠拟合</h2><p>欠拟合：<br>增加输入特征项；增加网络参数；减少正则化参数<br>过拟合：<br>数据清洗；增大数据集；采用正则化；增大正则化参数</p>
+<p><strong>正则化缓解过拟合</strong><br>在损失函数中引入模型复杂度指标，给 w 加权值，弱化训练数据的噪声<br>loss = loss(y, y_pred) + regularizer * loss(w)</p>
+<p>l1正则化：—套索Lasso回归<br>会使很多参数=0，是通过减少参数的数量，降低复杂度<br>loss-l1(w) = ∑ |wi|<br>l2正则化：—岭Ridge回归<br>会使很多参数–&gt;0但不为0，是通过减少参数值的大小，降低复杂度<br>loss-l2(w) = ∑ |wi^2|</p>
 
       
 
